@@ -14,7 +14,6 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +23,6 @@ import br.com.project.distributed_system.model.Sensor;
 public class SensorProducerService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    // @Value(" {spring.kafka.topic.sensor}")
-    // private String topic;
 
     String topicUnstructuredData = "SENSOR-DATA-UNSTRUCTURED";
     String topicStructuredData = "STRUCTURED-AND-ANALYZED-SENSOR-DATA";
@@ -43,7 +39,7 @@ public class SensorProducerService {
         for (int index = 0; index < namberOfData; index++) {
 
             String formattedDate = new SimpleDateFormat("dd/MM/yyyy").format(getDate());
-            String sensorName = String.format("Sensor %d - %d", index, index + 1);
+            String sensorName = getRandomSensorName();
             String macAddress = generateRandomMacAddress();
             String location = generateRandomLocation();
             List<Double> readings = generateRandomReadings(10, 10.0, 99.99);
@@ -51,21 +47,9 @@ public class SensorProducerService {
             Double maxValue = calculateMaxValue(readings);
             Double averageValue = calculateAverageValue(readings);
             Date date = getDate();
-            // var unstructuredData = String.format(
-            //         "{ Sensor_Name: %s,MAC_Address: %s, Minimum_Value: %,.3f,Maximum_Value: %,.3f, Average_Value: %,.3f, Location: %s, Date: %s}",
-            //         sensorName, macAddress, minValue, maxValue, averageValue, location, formattedDate);
-
             var unstructuredData = String.format(Locale.US, 
             "%s, %s, %f, %f, %f, %s, %s @",
                 sensorName, macAddress, minValue, maxValue, averageValue, location, formattedDate);
-            // var unstructuredData = "{ Sensor_Name: " + sensorName +
-            // "MAC_Address=" + macAddress +
-            // "Minimum_Value=" + minValue +
-            // "Maximum_Value=" + maxValue +
-            // "Average_Value=" + averageValue +
-            // "Location=" + location +
-            // "Date=" + getDate();
-
 
             var key = UUID.randomUUID().toString();
             // logger.info(String.format("Publishing unstructuredData -> { %s }", unstructuredData));
@@ -147,6 +131,15 @@ public class SensorProducerService {
         String[] locations = { "Room A", "Room B", "Room C", "Lobby", "Office", "Kitchen" };
         Random rand = new Random();
         return locations[rand.nextInt(locations.length)];
+    }
+    public String getRandomSensorName() {
+        List<String> sensorNames = new ArrayList<String>();
+        sensorNames.add("Forno");
+        sensorNames.add("Caldeira");
+        sensorNames.add("Estufa");
+        Random random = new Random();
+        int randomIndex = random.nextInt(sensorNames.size());
+        return sensorNames.get(randomIndex)+" - "+generateRandomLocation();
     }
 
 }
