@@ -55,6 +55,44 @@ Com o kafdrop podemos visualizar informações de brokers Kafka como tópicos ex
 
 acesse a class "DistributedSystemApplication" execute a main.
 
+GET: http://localhost:8080/kafka/publish?data=5
+
+```
+Successfully publisher
+```
+
+GET: http://localhost:8080/kafka/sensor
+```
+//body
+[
+    {
+        "sensorName": "Forno - Room B",
+        "macAddress": "EB:3F:BF:51:5B:CB",
+        "minValue": 11.17,
+        "maxValue": 98.59,
+        "averageValue": 60.109000000000016,
+        "location": "Kitchen",
+        "date": "2023-12-10T13:49:50.715+00:00"
+    }
+]
+```
+
+POST: http://localhost:8080/kafka/sensor
+
+```
+// body
+{
+    "sensorName": "Forno - Room B",
+    "macAddress": "EB:3F:BF:51:5B:CB",
+    "minValue": 11.17,
+    "maxValue": 98.59,
+    "averageValue": 60.109000000000016,
+    "location": "Kitchen",
+    "date": "2023-12-10T13:49:50.715+00:00"
+}
+
+```
+
 ## Executando o Front End 
 
 Abrar um novo terminal 
