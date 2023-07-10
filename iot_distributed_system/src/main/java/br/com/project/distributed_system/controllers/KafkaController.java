@@ -11,7 +11,7 @@ import br.com.project.distributed_system.service.SensorProducerService;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:5173/")
 @RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/kafka")
