@@ -1,9 +1,12 @@
 package br.com.project.distributed_system.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import br.com.project.distributed_system.model.Sensor;
 import br.com.project.distributed_system.service.AnalystConsumerService;
+import br.com.project.distributed_system.service.AnalystProducerService;
 import br.com.project.distributed_system.service.SensorProducerService;
 import lombok.RequiredArgsConstructor;
 
@@ -17,29 +20,25 @@ public class KafkaController {
     @Autowired
     private final SensorProducerService producerService;
     private final AnalystConsumerService consumerService;
+    private final AnalystProducerService analystproducerService;
 
 
     @GetMapping(value = "/publish")
     public String sendMessageToKafkaTopic(@RequestParam("data") String data) {
         var number = Integer.parseInt(data);
         producerService.sensorDataGenerator(number);
-        return "Successfully publisher message..!";
+        return "Successfully publisher";
     }
 
-    @GetMapping(value = "/Sensors")
+    @GetMapping(value = "/sensor")
     public List<Sensor> sendMessageToKafkaTopic() {
         return consumerService.getSensors();
     }
 
 
-    // @PostMapping(value = "/publish")
-    // public Map<String, Sensor> sendObjectToKafkaTopic(@RequestBody Sensor sensor) {
-    //     consumerService.ge;
-
-    //     Map<String, Sensor> map = new HashMap<>();
-    //     // map.put("message", "Successfully publisher .!");
-    //     map.put("payload", sensor);
-
-    //     return map;
-    // }
+    @PostMapping(value = "/sensor")
+    public ResponseEntity<Sensor> sendObjectToKafkaTopic(@RequestBody Sensor sensor) {
+        analystproducerService.structureDataSend(sensor);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 }

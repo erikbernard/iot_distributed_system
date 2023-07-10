@@ -1,8 +1,6 @@
 package br.com.project.distributed_system.model;
 
-import java.time.LocalDate;
 import java.util.Date;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;

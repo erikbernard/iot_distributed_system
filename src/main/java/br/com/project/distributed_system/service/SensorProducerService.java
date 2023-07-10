@@ -1,8 +1,6 @@
 package br.com.project.distributed_system.service;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,21 +21,13 @@ import br.com.project.distributed_system.model.Sensor;
 public class SensorProducerService {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    String topicUnstructuredData = "SENSOR-DATA-UNSTRUCTURED";
     String topicStructuredData = "STRUCTURED-AND-ANALYZED-SENSOR-DATA";
-
-    String bootstrapServers="127.0.0.1:9092";
-    String groupIdSensor ="group_id_sensor";
-    String groupIdAnalys ="group_id_analyst";
 
     @Autowired
     private KafkaTemplate<String, Sensor> kafkaTemplate;
 
     public void sensorDataGenerator(int namberOfData) {
-
         for (int index = 0; index < namberOfData; index++) {
-
             String formattedDate = new SimpleDateFormat("dd/MM/yyyy").format(getDate());
             String sensorName = getRandomSensorName();
             String macAddress = generateRandomMacAddress();
@@ -56,7 +46,7 @@ public class SensorProducerService {
             logger.info("Publishing unstructuredData -> { %s }", unstructuredData);
             // kafkaTemplate.send(topicUnstructuredData,key,unstructuredData);
             var sensor = new Sensor(sensorName, macAddress, minValue, maxValue, averageValue, location, date);
-            kafkaTemplate.send(topicUnstructuredData,key,sensor);
+            kafkaTemplate.send(topicStructuredData,key,sensor);
         }
     }
 

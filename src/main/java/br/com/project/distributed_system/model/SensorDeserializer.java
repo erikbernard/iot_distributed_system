@@ -18,8 +18,6 @@ public class SensorDeserializer implements Deserializer<Sensor> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-		
 		return null;
 	}
-    
 }

@@ -19,9 +19,6 @@ public class SensorSerializer implements Serializer<Sensor>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-		
 		return null;
 	}
-
-	
 }
