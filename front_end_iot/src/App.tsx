@@ -44,8 +44,7 @@ function App() {
       }
     };
 
-    const interval = setInterval(fetchSensorData, 15000);
-
+    const interval = setInterval(fetchSensorData, 5000);
     return () => {
       clearInterval(interval);
     };
