@@ -98,5 +98,9 @@ POST: http://localhost:8080/kafka/sensor
 Abrar um novo terminal 
 
 
-## Projeto em execução
+## Executar o Front End
 
+```
+npm run dev
+
+```
