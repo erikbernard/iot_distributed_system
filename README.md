@@ -102,5 +102,4 @@ Abrar um novo terminal
 
 ```
 npm run dev
-
 ```
