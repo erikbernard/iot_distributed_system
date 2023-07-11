@@ -97,6 +97,17 @@ POST: http://localhost:8080/kafka/sensor
 
 Abrar um novo terminal 
 
+## Entra na pasta
+
+```
+cd front_end_iot
+```
+
+## Instalar depêndencias
+
+```
+npm i
+```
 
 ## Executar o Front End
 
