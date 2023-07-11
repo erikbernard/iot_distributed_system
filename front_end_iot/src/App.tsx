@@ -6,6 +6,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css'; //theme
 import 'primereact/resources/primereact.min.css'; //core css
 import 'primeicons/primeicons.css'; //icons
 import 'primeflex/primeflex.css'; // flex
+import '/style/app.css'// Css
 import CardList from './CardList';
 import Forms from './forms/index';
 import { Button } from 'primereact/button';
@@ -73,18 +74,21 @@ function App() {
   };
 
   return (
-    <div >
-      <Card title="Projeto de Sistema Distribuido">
-        <p className="m-0">
-          O projeto demostrar a aplicabilidade do kafka com spring boot no contexto de aplicações distribuidas.
-        </p>
-      </Card>
-      <TabView>
+    <div>
+        <Card className='Card vw-100'>
+          <h1 className='title'>
+            Projeto de Sistema Distribuido
+          </h1>
+          <p className="m-0">
+            O projeto demostrar a aplicabilidade do kafka com spring boot no contexto de aplicações distribuidas.
+          </p>
+        </Card>
+      <TabView className='TabView'>
         <TabPanel header="Lista de Sensores">
           {sensorData.length == 0 ?
             <div>
               {loading ?
-                <ProgressSpinner style={{ width: '50px', height: '50px' }} strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
+                <ProgressSpinner className='load' style={{ width: '50px', height: '50px' }} strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
                  :
                 <div>
                   <label htmlFor="minValue" className="font-bold flex flex-column mb-2">Quantidade de dados</label>
@@ -93,7 +97,9 @@ function App() {
                 </div>
               }
             </div> :
+            <div className='CardInList'>
               <CardList dataSensor={sensorData} />
+            </div>
             }
         </TabPanel>
         <TabPanel header="Cadastrar novo Sensor">

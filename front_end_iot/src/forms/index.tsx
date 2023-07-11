@@ -52,13 +52,13 @@ export default function Forms() {
 
 
     return (
-        <div className="card flex justify-content-center">
-            <form onSubmit={handleSubmitSensor} className="flex flex-column gap-2">
-                <div className="flex-auto">
+        <div className="card justify-content-center Forms">
+            <form onSubmit={handleSubmitSensor} className="flex flex-column gap-2 FormContent">
+                <div className="flex-auto ">
                     <label htmlFor="sensorName" className="font-bold flex flex-column mb-2">Sensor Nome</label>
                     <InputText id="sensorName" value={sensorName} onChange={(e) => setSensorName(e.target.value)} />
 
-                    <label htmlFor="location" className="font-bold flex flex-column mb-2">Localizaçõa</label>
+                    <label htmlFor="location" className="font-bold flex flex-column mb-2">Localização</label>
                     <InputText id="location" value={location} onChange={(e) => setLocation(e.target.value)} />
 
                     <label htmlFor="minValue" className="font-bold flex flex-column mb-2">Valor minimo</label>                 

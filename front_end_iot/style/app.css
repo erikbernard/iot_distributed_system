@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    border: 0;
+
+}
+
+.Forms {
+    display: flex;
+    margin-left: 25vw;
+    margin-top: 12.5vh;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    width: 50vw;
+    border-radius: 1rem;
+}
+
+.Forms .FormContent{
+    margin: 2rem;
+}
+
+.Forms .FormContent label{ 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+
+.Forms .FormContent input{ 
+    width: 40vw;
+}
+
+
+.load{
+    margin-left: 50vw;
+    margin-top: 25vh;
+}
+
+.TabView div .CardInList {
+    margin-left: 25vw;
+    
+}
+
+.CardList {
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.25);
+    margin: 1rem;
+    width: 50vw;
+    border-radius: 1rem;
+    
+}
+
+.CardList .text-1xl{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400; 
+}
+
+.CardList .text-2xl{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700; 
+}
+
+.Card {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.Card .title {
+    font-size: 32px;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.Card p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+

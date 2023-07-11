@@ -29,7 +29,7 @@ export default function CardList({ dataSensor }: Prop) {
       }
     const itemSensor = (data: Sensor) => {
         return (
-            <div className="col-12">
+            <div className="col-12 CardList">
                 <div className="flex flex-row xl:flex-row xl:align-items-start p-4 gap-4">
                     <img className="w-9 sm:w-16rem xl:w-10rem block xl:block mx-auto border-round" src={Temperature} alt={data.sensorName} />
                     <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
